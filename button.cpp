@@ -13,13 +13,13 @@ void interrupt(void * args) {
 
 int main() {
 	// create a GPIO object from MRAA
-	mraa::Gpio* d_pin = new mraa::Gpio(2);
+	mraa::Gpio d_pin(2);
 
 	// set the pin as input
-	d_pin->dir(mraa::DIR_IN);
+	d_pin.dir(mraa::DIR_IN);
 
 	// set the ISR
-	d_pin->isr(mraa::EDGE_BOTH, interrupt, NULL);
+	d_pin.isr(mraa::EDGE_BOTH, interrupt, NULL);
 
 	// update the cloud
 	for (;;) {
